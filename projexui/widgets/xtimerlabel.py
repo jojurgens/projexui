@@ -251,3 +251,11 @@ class XTimerLabel(QtGui.QLabel):
     x_interval = QtCore.Property(int, interval, setInterval)
 
 __designer_plugins__ = [XTimerLabel]
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XTimerLabel(None)
+    widget.show()
+    widget.start()
+    app.exec_()

@@ -259,3 +259,14 @@ class XCollapsibleLoggerWidget(QtGui.QWidget):
     x_formatText = QtCore.Property(str, formatText, setFormatText)
 
 __designer_plugins__ = [XCollapsibleLoggerWidget]
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    from projexui.widgets.xcollapsibleloggerwidget import XCollapsibleLoggerWidget
+    app = QtGui.QApplication([])
+    widget = XCollapsibleLoggerWidget()
+    widget.debug('Debug message')
+    widget.critical('Critical message')
+    widget.error('Error message')
+    widget.show()
+    app.exec_()

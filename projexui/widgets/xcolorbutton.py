@@ -72,3 +72,15 @@ class XColorButton(QPushButton):    """    The XColorButton class is a simple 
     x_color = Property(QColor, color, setColor)
     
 __designer_plugins__ = [XColorButton]
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui, QtCore
+    app = QtGui.QApplication([])
+    widget = XColorButton(None)
+    def setColor(color):
+        widget.setStyleSheet('background-color: rgb(%i,%i,%i)'\
+                             % (color.red(), color.green(),color.blue()))
+    widget.colorChanged.connect(setColor)
+    widget.show()
+    app.exec_()

@@ -110,3 +110,10 @@ class XKeyValueDialog(QDialog):
             return (True, dlg.key(), dlg.value())
         
         return (False, '', '')
+
+if __name__=='__main__':
+    from projexui.qt.QtGui import QApplication
+    app = QApplication([])
+    widget = XKeyValueDialog()
+    print widget.show()
+    app.exec_()

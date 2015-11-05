@@ -179,3 +179,14 @@ class XLabel(QLabel):
     x_editable = Property(bool, isEditable, setEditable)
 
 __designer_plugins__ = [XLabel]
+
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XLabel(None)
+    widget.setText('Hello World')
+    widget.setEditable(True)
+    widget.show()
+    app.exec_()

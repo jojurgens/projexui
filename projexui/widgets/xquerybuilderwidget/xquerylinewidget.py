@@ -322,3 +322,12 @@ class XQueryLineWidget(QWidget):
             if ( type(widget) != QWidget ):
                 widget.setText(text)
     
+
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XQueryLineWidget(None)
+    widget.show()
+    app.exec_()

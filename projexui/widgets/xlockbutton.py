@@ -95,3 +95,12 @@ class XLockButton(XToolButton):
         return self._unlockIcon
 
 __designer_plugins__ = [XLockButton]
+
+
+    
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XLockButton(None)
+    widget.show()
+    app.exec_()

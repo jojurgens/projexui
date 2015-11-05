@@ -115,3 +115,14 @@ class XKeyValueTreeWidget(XTreeWidget):
             self.addEntry(key, text)
 
 __designer_plugins__ = [XKeyValueTreeWidget]
+
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XKeyValueTreeWidget(None)
+    widget.setEditTriggers(QtGui.QAbstractItemView.AllEditTriggers) # SelectedClicked
+    widget.setDictionary(dict(zip(range(26), list('abcdefghijklmnopqrstuvwxyz'))))
+    widget.show()
+    app.exec_()

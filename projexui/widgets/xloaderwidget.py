@@ -453,3 +453,9 @@ class XLoaderWidget(QWidget):
             loader.setParent(None)
             loader.deleteLater()
     
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XLoaderWidget(None)
+    widget.show()
+    app.exec_()

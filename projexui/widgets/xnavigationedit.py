@@ -710,3 +710,17 @@ class XNavigationEdit(XLineEdit):
             self.rebuild()
 
 __designer_plugins__ = [XNavigationEdit]
+
+
+
+    
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XNavigationEdit(None)
+    widget.setTopLevelItems([XNavigationItem('what'), 
+                             XNavigationItem('does'),
+                             XNavigationItem('this'),
+                             XNavigationItem('do')])
+    widget.show()
+    app.exec_()

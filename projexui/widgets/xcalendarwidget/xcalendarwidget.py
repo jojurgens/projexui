@@ -361,3 +361,21 @@ class XCalendarWidget(QGraphicsView):
         :return     <XCalendarWidget.TimelineScale>
         """
         return self.scene().timelineScale()
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XCalendarWidget(None)
+    scn = widget.scene()
+    it1 = XCalendarItem()
+    it1.setDuration(4)
+    it1.setBorderColor(QtGui.QColor(22,123,233))
+    it1.setDescription('Blah blah blah')
+    it1.setTitle('Long Task')
+    scn.addItem(it1)
+    scn.addItem(XCalendarItem())
+    scn.addItem(XCalendarItem())
+    widget.resize(1000,900)
+    widget.show()
+    app.exec_()

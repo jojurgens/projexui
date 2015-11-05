@@ -90,3 +90,10 @@ class XBasicCardWidget(XAbstractCardWidget):
         
         self._thumbnailButton.setIcon(factory.thumbnail(record))
         self._titleLabel.setText(factory.thumbnailText(record))
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XBasicCardWidget(None)
+    widget.show()
+    app.exec_()

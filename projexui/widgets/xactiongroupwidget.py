@@ -330,3 +330,20 @@ class XActionGroupWidget(QWidget):
         self.reset()
 
 __designer_plugins__ = [XActionGroupWidget]
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XActionGroupWidget()
+
+    widget.addAction('Day')
+    widget.addAction('Month')
+    widget.addAction('Year')
+    # create connections
+    def printAction(act):
+        print act.text()
+    widget.actionGroup().triggered.connect(printAction)
+
+    widget.show()
+    app.exec_()

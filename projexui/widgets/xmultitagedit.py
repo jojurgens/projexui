@@ -752,3 +752,12 @@ class XMultiTagEdit(XListWidget):
     x_itemsRemovable = Property(bool, itemsRemovable, setItemsRemovable)
 
 __designer_plugins__ = [XMultiTagEdit]
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XMultiTagEdit(None)
+    widget.addTag('Tag 1')
+    widget.addTag('Tag 2')
+    widget.show()
+    app.exec_()

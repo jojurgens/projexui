@@ -238,3 +238,37 @@ class XColorTreeWidget(XTreeWidget):
         self.setColorSet(colorset)
     
 __designer_plugins__ = [XColorTreeWidget]
+
+
+if __name__=='__main__':
+    from projexui.qt.QtCore import Qt
+    from projexui.qt.QtGui import QApplication,QBrush,QColor
+    app = QApplication([])
+    widget = XColorTreeWidget(None)
+    c1 = XColorTreeWidgetItem('Bobby',  [QBrush(QColor(221,88,222)),QBrush(QColor(121,208,122))])
+    c1.setData(1, Qt.DisplayRole, 'asdfasdf')
+    c1.setData(2, Qt.DisplayRole, 'asdfasdf')
+
+    c2 = XColorTreeWidgetItem('pinnsvin',  [QBrush(QColor(212,188,162)),QBrush(QColor(191,38,212))])
+    c2.setData(1, Qt.DisplayRole, 'asdfasdf')
+    c2.setData(2, Qt.DisplayRole, 'sdfasdf')
+
+    c3 = XColorTreeWidgetItem('fleskefitta',  [QBrush(QColor(112,238,62)),QBrush(QColor(154,199,25))])
+    c3.setData(1, Qt.DisplayRole, 'asdfsad')
+    c3.setData(2, Qt.DisplayRole, 'sdfasdf')
+
+    widget.addTopLevelItems([c1,c2,c3])
+    widget.setColumnCount(3)
+
+    header = widget.header()
+    header.setResizeMode(0, header.Fixed)
+    header.setResizeMode(1, header.Stretch)
+
+    widget.show()
+
+    import sys
+    sys.path.append(r'E:\PYTHON\projex\projexui\projexui\exporters')
+    import xexcelexporter
+    xexcelexporter.XExcelExporter().exportTree(widget,
+                                               r'E:\PYTHON\projex\projexui\projexui\exporters\tissen.xls')
+    app.exec_()

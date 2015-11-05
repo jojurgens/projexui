@@ -561,3 +561,10 @@ class XdkWindow(QMainWindow):
         
         if ( filename ):
             dlg.loadFilename(filename)
+
+if __name__=='__main__':
+    from PyQt4 import QtGui
+    app = QtGui.QApplication([])
+    widget = XdkWindow()
+    widget.show()
+    app.exec_()

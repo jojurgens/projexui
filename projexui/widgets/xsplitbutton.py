@@ -536,3 +536,15 @@ class XSplitButton(QWidget):
     x_checkable   = Property(bool, isCheckable, setCheckable)
 
 __designer_plugins__ = [XSplitButton]
+
+
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XSplitButton(None)
+    widget.addAction('a')
+    widget.addAction('b')
+    widget.addAction('c')
+    widget.show()
+    app.exec_()

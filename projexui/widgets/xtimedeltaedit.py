@@ -159,3 +159,10 @@ class XTimeDeltaEdit(QFrame):
         self._directionCombo.setCurrentIndex(index)
 
 __designer_plugins__ = [XTimeDeltaEdit]
+
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XTimeDeltaEdit()
+    widget.show()
+    app.exec_()

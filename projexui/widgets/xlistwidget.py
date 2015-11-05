@@ -611,3 +611,15 @@ class XListWidget(QtGui.QListWidget):
     
 # define the designer properties
 __designer_plugins__ = [XListWidget]
+if __name__=='__main__':
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XListWidget(None)
+    widget.addItem('a')
+    widget.addItem('b')
+    widget.addItem('c')
+    widget.setHint('1')
+    widget.setHint('2')
+	
+    widget.show()
+    app.exec_()

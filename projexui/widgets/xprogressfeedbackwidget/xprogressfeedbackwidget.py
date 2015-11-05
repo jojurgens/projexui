@@ -113,3 +113,11 @@ class XProgressFeedbackWidget(QtGui.QWidget):
 
     x_showSecondaryProgress = QtCore.Property(bool, showSecondaryProgress, setShowSecondaryProgress)
 
+
+if __name__=='__main__':
+    # this doesnt work
+    from projexui.qt import QtGui
+    app = QtGui.QApplication([])
+    widget = XProgressFeedbackWidget(None)
+    widget.show()
+    app.exec_()
