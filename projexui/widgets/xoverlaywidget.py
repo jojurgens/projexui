@@ -22,11 +22,11 @@ class XOverlayWidget(QtGui.QWidget):
 
         # create the coloring for the overlay
         palette = self.palette()
-        clr = QtGui.QColor('#222222')
-        clr.setAlpha(210)
+        clr = QtGui.QColor('red')
+        clr.setAlpha(150)
         palette.setColor(palette.Window, clr)
         self.setPalette(palette)
-        self.setAutoFillBackground(True)
+        #self.setAutoFillBackground(True)
 
         # listen to the parents event filter
         parent.installEventFilter(self)
@@ -268,3 +268,28 @@ class XOverlayWidget(QtGui.QWidget):
         overlay.show()
         return overlay
 
+if __name__=='__main__':
+    app = QtGui.QApplication([])
+    mainWidget = QtGui.QWidget()
+    layout = QtGui.QVBoxLayout(mainWidget)
+    button1 = QtGui.QPushButton('hello')
+    button1.resize(222,100)
+    layout.addWidget(button1)
+
+    button2 = QtGui.QPushButton('goasdasdasdsldkslkdlskdlksldkodbye')
+    button2.resize(222,100)
+
+    layout.addWidget(button2)
+
+    xwidget = XOverlayWidget(button2)
+    bbajhah = QtGui.QPushButton('sdjksjdksjdkj')
+    xwidget.setCentralWidget(bbajhah)
+    mainWidget.show()
+
+    def toggle(w):
+        if w.isVisible():
+            w.hide()
+        else:
+            w.show()
+    button1.clicked.connect(lambda: toggle(xwidget))
+    app.exec_()

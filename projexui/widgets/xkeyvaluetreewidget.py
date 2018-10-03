@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-""" 
+"""
 Creates a key/value pair editing tree widget.
 """
 
@@ -25,23 +25,23 @@ from projexui.widgets.xtreewidget import XTreeWidget,\
 class XKeyValueTreeWidget(XTreeWidget):
     def __init__(self, parent=None):
         super(XKeyValueTreeWidget, self).__init__(parent)
-        
+
         # define custom properties
         self._initialized = False
-        
+
         # define editing options
         self.setEditable(True)
         self.setAlternatingRowColors(True)
         self.setRootIsDecorated(False)
         self.setColumnEditingEnabled(0, False)
-        
+
         # create connections
         self.itemClicked.connect(self.handleClick)
 
     def addEntry(self, key='', value=''):
         """
         Creates a new entry item for this widget.
-        
+
         :param      key     | <str>
                     value   | <variant>
         """
@@ -52,14 +52,14 @@ class XKeyValueTreeWidget(XTreeWidget):
         new_item.setIcon(0, QtGui.QIcon(img))
         new_item.setFixedHeight(22)
         self.insertTopLevelItem(self.topLevelItemCount() - 1, new_item)
-        
+
         return new_item
 
     def dictionary(self):
         """
         Returns a dictionary of the key/value pairing for the items in
         this widget.
-        
+
         :return     {<str> key: <str> value, ..}
         """
         output = {}
@@ -78,13 +78,13 @@ class XKeyValueTreeWidget(XTreeWidget):
             new_item = self.addEntry()
             self.setCurrentItem(new_item, 1)
             self.editItem(new_item, 1)
-        
+
         elif column == 0:
             self.takeTopLevelItem(self.indexOfTopLevelItem(item))
 
     def showEvent(self, event):
         super(XKeyValueTreeWidget, self).showEvent(event)
-        
+
         if not self._initialized:
             self.setDictionary({})
 
@@ -92,17 +92,17 @@ class XKeyValueTreeWidget(XTreeWidget):
         """
         Sets a dictionary of the key/value pairing for the items in
         this widget.
-        
+
         :param      props | {<str> key: <str> value, ..}
         """
         if not self._initialized:
             self.setColumns(['', 'Property', 'Value'])
             self.setColumnWidth(0, 22)
-            
+
         self._initialized = True
-        
+
         self.clear()
-        
+
         palette = self.palette()
         item = XTreeWidgetItem(self, ['add another item'])
         item.setForeground(0, palette.color(palette.Disabled, palette.Text))
@@ -110,7 +110,7 @@ class XKeyValueTreeWidget(XTreeWidget):
         item.setFlags(QtCore.Qt.ItemFlags(0))
         item.setFixedHeight(22)
         item.setFirstColumnSpanned(True)
-        
+
         for key, text in props.items():
             self.addEntry(key, text)
 
@@ -119,10 +119,15 @@ __designer_plugins__ = [XKeyValueTreeWidget]
 
 
 if __name__=='__main__':
+    import pprint
     from projexui.qt import QtGui
     app = QtGui.QApplication([])
     widget = XKeyValueTreeWidget(None)
     widget.setEditTriggers(QtGui.QAbstractItemView.AllEditTriggers) # SelectedClicked
-    widget.setDictionary(dict(zip(range(26), list('abcdefghijklmnopqrstuvwxyz'))))
+    widget.setDictionary(dict(zip(range(10), list('abcdefghij'))))
+    widget.resize(200,300)
+    def changed(x):
+        pprint.pprint(widget.dictionary())
+    widget.itemChanged.connect(changed)
     widget.show()
     app.exec_()
